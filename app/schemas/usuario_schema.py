@@ -1,13 +1,13 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class UsuarioBase(BaseModel):
-    nome: str
-    telegram_id: str
+    nome:        str = Field(..., min_length=2, max_length=100)
+    telegram_id: str = Field(..., min_length=5, max_length=50)
 
-class UsuarioCreate(UsuarioBase):
+class UsuarioCriar(UsuarioBase):
     pass
 
-class UsuarioResponse(UsuarioBase):
+class UsuarioResposta(UsuarioBase):
     id: int
-    class Config:
-        from_attributes = True
+
+    model_config = {"from_attributes": True}

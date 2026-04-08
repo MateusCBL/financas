@@ -21,7 +21,7 @@ async def enviar_alerta_gasto(telegram_id: str, descricao: str, valor: float):
             })
             response.raise_for_status()
     except httpx.TimeoutException:
-        logger.warning(f"Timeout ao notificar usuário {telegram_id}")
+        logger.warning(f"Timeout ao notificar telegram_id={telegram_id}")
     except httpx.HTTPStatusError as e:
         logger.error(f"Erro HTTP do Telegram: {e.response.status_code}")
     except Exception as e:
