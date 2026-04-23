@@ -10,3 +10,5 @@ class Gasto(Base):
     valor       = Column(Float, nullable=False)                 
     usuario_id  = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
     criado_em   = Column(DateTime, server_default=func.now())   
+
+    
